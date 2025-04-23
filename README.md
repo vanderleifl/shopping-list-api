@@ -9,41 +9,67 @@ Created by **Vanderlei Franke Liviz** — full-stack developer with 30+ years of
 - [GitHub](https://github.com/vanderleifl)
 - [LinkedIn](https://www.linkedin.com/in/vanderleifl)
 
-
 ## 📦 Technologies Used
 
-- ASP.NET Core 9 (preview)
-- Entity Framework Core with InMemoryDatabase
-- Swagger for API documentation
-- C#
-- RESTful principles
-- VS Code + .NET CLI
+- ASP.NET Core MVC
+- RESTful API design
+- Swagger (OpenAPI)
+- Entity Framework Core with (InMemory provider)
+- Git version control
+- DevOps best practices
+- Hosting on Microsoft Azure
 
-## 🔧 Features
+## 🚀 Current Features
 
-- Create and manage shopping lists and items
-- API documentation with Swagger UI
-- Clean and modular architecture
-- Ready for user authentication with JWT
-- Prepped for CI/CD and deployment to Azure
+✅ Supports full **CRUD** operations for shopping list items:
 
-## 📚 Best Practices & Concepts
+| Method | Route                  | Description                                 |
+|--------|------------------------|---------------------------------------------|
+| `GET`  | `/items`               | Retrieve all items                          |
+| `POST` | `/items`               | Create a new item                           |
+| `PUT`  | `/items/{id}/toggle`   | Toggle item as purchased/unpurchased        |
+| `DELETE` | `/items/{id}`        | Delete an item from the list                |
 
-| Practice                       | Description                                               |
-|-------------------------------|-----------------------------------------------------------|
-| **Clean Code**                | Organized by responsibility: Models, Data, Controllers    |
-| **Dependency Injection**      | Services injected via constructor                         |
-| **System Design**             | Architecture oriented for learning and scalability        |
-| **DevOps-ready**              | Git integration, API-first, easy CI/CD integration        |
-| **Internationalization**      | Codebase and naming aligned for global understanding      |
+## 📦 Example JSON (Create Item)
 
-## 🚀 Planned Improvements
+```json
+{
+  "name": "Milk",
+  "price": 3.49,
+  "shoppingListId": 1
+}
 
-- ✅ JWT Authentication (in progress)
-- ❌ Persist data using SQL Server or Azure SQL
-- ❌ Role-based authorization
-- ❌ Front-end React app (shopping list manager)
-- ❌ Azure deployment + CI/CD pipeline
+🧪 Swagger UI
+
+To explore and test the API, open:
+
+http://localhost:5251/ (your port can be different)
+
+📂 Project Structure (so far)
+
+Models/Item.cs — Defines shopping item entity.
+Models/ShoppingList.cs — Represents a list with multiple items.
+Data/AppDbContext.cs — EF Core context using InMemoryDatabase.
+Program.cs — Configures API endpoints and services.
+
+🔄 Next Steps
+
+Add authentication with JWT.
+Link users to shopping lists.
+Connect to a real database (SQL Server or Azure SQL).
+Build React front-end to consume this API.
+Learn how to deploy the full stack using DevOps tools and CI/CD pipelines.
+
+🧠 Learning Goals
+
+This project is part of a continuous learning journey to improve understanding of:
+
+System design patterns
+DevOps and CI/CD
+Cloud hosting (Azure)
+Front-end integration (React)
+📌 Author: @vanderleifl
+🎯 Project: Educational / Portfolio
 
 ## 🔗 How to Run
 
