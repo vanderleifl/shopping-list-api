@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoppingListAPI.Data;
@@ -17,6 +18,7 @@ namespace ShoppingListAPI.Controllers
         }
 
         // GET: api/shoppinglist
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ShoppingList>>> GetAll()
         {
@@ -26,6 +28,7 @@ namespace ShoppingListAPI.Controllers
         }
 
         // POST: api/shoppinglist
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<ShoppingList>> Create([FromBody]ShoppingList shoppingList)
         {
@@ -36,6 +39,7 @@ namespace ShoppingListAPI.Controllers
         }
 
         // GET: api/shoppinglist/{id}
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<ShoppingList>> GetById(int id)
         {
@@ -52,6 +56,7 @@ namespace ShoppingListAPI.Controllers
         }
 
         // PUT: api/shoppinglist/{id}
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ShoppingList shoppingList)
         {
@@ -75,6 +80,7 @@ namespace ShoppingListAPI.Controllers
         }
 
         // DELETE: api/shoppinglist/{id}
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
