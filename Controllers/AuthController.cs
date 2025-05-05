@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ShoppingListAPI.Data;
-using ShoppingListAPI.Models;
+using ShoppingListAPI.Services;
 using ShoppingListAPI.Settings;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -15,12 +15,12 @@ namespace ShoppingListAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
-        private readonly JwtSettings _jwtSettings;
+        private readonly TokenService _tokenService;
 
-        public AuthController(AppDbContext context, IOptions<JwtSettings> jwtSettings)
+        public AuthController(AppDbContext context, TokenService tokenService)
         {
             _context = context;
-            _jwtSettings = jwtSettings.Value;
+            _tokenService = tokenService;
         }
 
         [HttpPost("login")]
@@ -34,28 +34,8 @@ namespace ShoppingListAPI.Controllers
             {
                 return Unauthorized("Invalid email or password.");
             }
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Name, user.Name)
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpirationInMinutes),
-                Issuer = _jwtSettings.Issuer,
-                Audience = _jwtSettings.Audience,
-                SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(key), 
-                    SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var jwt = tokenHandler.WriteToken(token);
+            
+            var jwt = _tokenService.GenerateToken(user);
 
             return Ok(new { token = jwt });
         }
