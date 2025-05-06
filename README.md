@@ -47,6 +47,7 @@ http://localhost:5251/ (your port can be different)
 
 📂 Project Structure (so far)
 
+Models/User.cs - Controls the access to the API
 Models/Item.cs — Defines shopping item entity.
 Models/ShoppingList.cs — Represents a list with multiple items.
 Data/AppDbContext.cs — EF Core context using InMemoryDatabase.
@@ -54,7 +55,6 @@ Program.cs — Configures API endpoints and services.
 
 🔄 Next Steps
 
-Add authentication with JWT.
 Link users to shopping lists.
 Connect to a real database (SQL Server or Azure SQL).
 Build React front-end to consume this API.
