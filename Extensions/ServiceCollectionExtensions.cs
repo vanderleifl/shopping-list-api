@@ -33,7 +33,7 @@ namespace ShoppingListAPI.Extensions
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
-                    Description = "Please enter 'Bearer' [space] and then your token",
+                    Description = "Please enter your token without 'Bearer ' prefix",
                     Reference = new OpenApiReference
                     {
                         Id = JwtBearerDefaults.AuthenticationScheme,
