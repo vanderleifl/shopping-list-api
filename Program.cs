@@ -1,12 +1,17 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using ShoppingListAPI.Data;
 using ShoppingListAPI.Extensions; // Criado para organizar os métodos de extensão
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTION_STRING");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("ShoppingListDB"));
+    options.UseSqlServer(connectionString, sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    }));
+//options => options.UseInMemoryDatabase("ShoppingListDB")
 
 builder.Services
     .AddApplicationServices()

@@ -53,10 +53,11 @@ Models/ShoppingList.cs — Represents a list with multiple items.
 Data/AppDbContext.cs — EF Core context using InMemoryDatabase.
 Program.cs — Configures API endpoints and services.
 
+Connected to a real database (SQL Server on Azure).
+
 🔄 Next Steps
 
 Link users to shopping lists.
-Connect to a real database (SQL Server or Azure SQL).
 Build React front-end to consume this API.
 Learn how to deploy the full stack using DevOps tools and CI/CD pipelines.
 

@@ -1,0 +1,37 @@
+# Build / bin / obj
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# ASP.NET Secrets
+secrets.json
+
+# Local settings
+appsettings.Development.json
+appsettings.Local.json
+.env
+
+# EF Core tools artifacts
+Migrations/*.csproj
+Migrations/bin/
+Migrations/obj/
+
+# Logs
+*.log
+
+# GitHub Actions artifacts
+.github/workflows/*.secrets.*
+
+# Ignore SQLite or local DBs (se quiser)
+*.db
+*.mdf
+*.ldf
