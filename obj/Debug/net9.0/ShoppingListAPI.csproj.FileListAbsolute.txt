@@ -169,3 +169,5 @@
 /Users/vanderleifrankeliviz/Desktop/Learning/ShoppingListAPI/obj/Debug/net9.0/ref/ShoppingListAPI.dll
 /Users/vanderleifrankeliviz/Desktop/Learning/ShoppingListAPI/obj/Debug/net9.0/ShoppingListAPI.sourcelink.json
 /Users/vanderleifrankeliviz/Desktop/Learning/ShoppingListAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/vanderleifrankeliviz/Desktop/Learning/ShoppingListAPI/bin/Debug/net9.0/DotNetEnv.dll
+/Users/vanderleifrankeliviz/Desktop/Learning/ShoppingListAPI/bin/Debug/net9.0/Sprache.dll

@@ -32,7 +32,13 @@ namespace ShoppingListAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<ShoppingList>> Create([FromBody]ShoppingList shoppingList)
         {
-            _context.ShoppingLists.Add(shoppingList);
+            var newList = new ShoppingList
+            {
+                Name = shoppingList.Name,
+                Items = shoppingList.Items ?? new List<Item>() // Ensure Items is not null
+            };
+
+            _context.ShoppingLists.Add(newList);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { id = shoppingList.Id }, shoppingList);

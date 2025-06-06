@@ -36,15 +36,19 @@ namespace ShoppingListAPI.Controllers
         // POST: api/user
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<User>> Create(User user)
+        public async Task<ActionResult<User>> Create(CreateUserDto dto)
         {
-            if (await _context.Users.AnyAsync(u => u.Email == user.Email))
+            if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
             {
                 return Conflict("User with this email already exists.");
             }
-
-            int id = _context.Users.OrderByDescending(u => u.Id).FirstOrDefault()?.Id + 1 ?? 1;
-            user.Id = id;
+            
+            var user = new User
+            {
+                Name = dto.Name,
+                Email = dto.Email,
+                Password = dto.Password
+            };
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();

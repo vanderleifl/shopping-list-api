@@ -29,14 +29,14 @@ namespace ShoppingListAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Item>> Create([FromBody] Item item)
         {
-            int id = 1;
-            var items = await _context.Items.ToListAsync();
-            if (items.Count > 0)
+            Item newItem = new Item
             {
-                id = items.Max(i => i.Id) + 1;
-            }
-            item.Id = id;
-            _context.Items.Add(item);
+                Name = item.Name,
+                IsPurchased = false,
+                Price = item.Price
+            };
+
+            _context.Items.Add(newItem);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using ShoppingListAPI.Data;
 using ShoppingListAPI.Extensions; // Criado para organizar os métodos de extensão
 
+DotNetEnv.Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTION_STRING");
